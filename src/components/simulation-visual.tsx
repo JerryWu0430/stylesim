@@ -17,35 +17,35 @@ const alerts = [
     icon: ArrowUp,
     title: "Increase Linen Blazer",
     message: "Production +40% recommended",
-    color: "emerald",
+    color: "accent",
   },
   {
     type: "warning",
     icon: Warning,
     title: "Wool Coat Alert",
     message: "Reduce order by 25 units",
-    color: "amber",
+    color: "neutral",
   },
   {
     type: "info",
     icon: Lightning,
     title: "Trending: Silk Midi",
     message: "Social buzz up 156%",
-    color: "blue",
+    color: "accent",
   },
   {
     type: "success",
     icon: CheckCircle,
     title: "Price Optimization",
     message: "Blazer margin +12% possible",
-    color: "emerald",
+    color: "accent",
   },
   {
     type: "warning",
     icon: ArrowDown,
     title: "Cardigan Demand",
     message: "Consider size rebalancing",
-    color: "amber",
+    color: "neutral",
   },
 ];
 
@@ -68,7 +68,7 @@ const DemandBar = memo(function DemandBar({
         <div className="flex items-center gap-2">
           <span className="text-sm font-semibold text-foreground">{product.demand}%</span>
           {product.trend === "up" && (
-            <TrendUp size={14} weight="bold" className="text-emerald-600" />
+            <TrendUp size={14} weight="bold" className="text-accent" />
           )}
           {product.trend === "down" && (
             <TrendDown size={14} weight="bold" className="text-rose-500" />
@@ -94,8 +94,8 @@ const DemandBar = memo(function DemandBar({
 const PulsingDot = memo(function PulsingDot() {
   return (
     <span className="relative flex h-2.5 w-2.5">
-      <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-500 opacity-75" />
-      <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-emerald-500" />
+      <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-accent opacity-75" />
+      <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-accent" />
     </span>
   );
 });
@@ -114,20 +114,15 @@ const AlertCard = memo(function AlertCard() {
   const Icon = alert.icon;
 
   const colorClasses = {
-    emerald: {
-      bg: "bg-emerald-50",
-      icon: "text-emerald-600",
-      border: "border-emerald-100",
+    accent: {
+      bg: "bg-[#B5A191]/10",
+      icon: "text-[#B5A191]",
+      border: "border-[#B5A191]/20",
     },
-    amber: {
-      bg: "bg-amber-50",
-      icon: "text-amber-600",
-      border: "border-amber-100",
-    },
-    blue: {
-      bg: "bg-blue-50",
-      icon: "text-blue-600",
-      border: "border-blue-100",
+    neutral: {
+      bg: "bg-foreground/5",
+      icon: "text-foreground/70",
+      border: "border-foreground/10",
     },
   };
 
@@ -196,9 +191,9 @@ export default function SimulationVisual() {
             <h3 className="font-semibold text-foreground">Spring 2026 Collection</h3>
             <p className="text-sm text-muted mt-1">Demand Simulation Results</p>
           </div>
-          <div className="flex items-center gap-2 px-3 py-1.5 bg-emerald-50 rounded-full">
+          <div className="flex items-center gap-2 px-3 py-1.5 bg-accent/10 rounded-full">
             <PulsingDot />
-            <span className="text-xs font-medium text-emerald-700">Live Analysis</span>
+            <span className="text-xs font-medium text-accent">Live Analysis</span>
           </div>
         </div>
 
@@ -215,7 +210,7 @@ export default function SimulationVisual() {
               <p className="text-xs text-muted mt-1">Projected Units</p>
             </div>
             <div>
-              <p className="text-2xl font-semibold text-emerald-600">+34%</p>
+              <p className="text-2xl font-semibold text-accent">+34%</p>
               <p className="text-xs text-muted mt-1">vs Last Season</p>
             </div>
             <div>

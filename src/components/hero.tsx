@@ -119,7 +119,7 @@ export default function Hero() {
                   animate={{ y: [0, -3, 0] }}
                   transition={{ duration: 2, repeat: Infinity }}
                 >
-                  <TrendUp size={20} weight="bold" className="text-emerald-600" />
+                  <TrendUp size={20} weight="bold" className="text-accent" />
                 </motion.div>
                 <span className="text-sm text-muted">
                   <span className="font-semibold text-foreground">73%</span> waste reduction
