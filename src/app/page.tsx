@@ -6,10 +6,12 @@ import Testimonials from "@/components/testimonials";
 import CTA from "@/components/cta";
 import Footer from "@/components/footer";
 import Navbar from "@/components/navbar";
+import AnimatedBackground from "@/components/animated-background";
 
 export default function Home() {
   return (
-    <main className="min-h-[100dvh] bg-background">
+    <main className="min-h-[100dvh] bg-background relative">
+      <AnimatedBackground />
       <Navbar />
       <Hero />
       <Features />
