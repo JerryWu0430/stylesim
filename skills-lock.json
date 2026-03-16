@@ -1,0 +1,10 @@
+{
+  "version": 1,
+  "skills": {
+    "business-model-canvas": {
+      "source": "scientiacapital/skills",
+      "sourceType": "github",
+      "computedHash": "cbf4727f60933372bbfd6b7223f19e9f22114263a51fbeb90e907ce854fb7cc2"
+    }
+  }
+}
