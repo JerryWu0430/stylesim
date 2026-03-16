@@ -53,11 +53,12 @@ export default function Features() {
           transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
           className="max-w-2xl"
         >
-          <p className="text-sm font-medium text-muted uppercase tracking-wider mb-4">
+          <p className="font-elegant text-lg text-muted mb-4">
             Features
           </p>
-          <h2 className="text-3xl md:text-4xl lg:text-5xl font-semibold tracking-tighter leading-tight">
-            Everything you need to predict demand accurately
+          <h2 className="text-3xl md:text-4xl lg:text-5xl font-medium tracking-tight leading-tight">
+            <span className="font-serif">Everything you need to</span>{" "}
+            <span className="font-elegant">predict demand accurately</span>
           </h2>
         </motion.div>
 
@@ -78,7 +79,7 @@ export default function Features() {
               <div className="w-12 h-12 rounded-2xl bg-foreground/5 flex items-center justify-center mb-5 group-hover:bg-foreground/10 transition-colors">
                 <feature.icon size={24} weight="regular" className="text-foreground" />
               </div>
-              <h3 className="text-lg font-semibold text-foreground mb-2">
+              <h3 className="text-lg font-serif text-foreground mb-2">
                 {feature.title}
               </h3>
               <p className="text-muted leading-relaxed">{feature.description}</p>

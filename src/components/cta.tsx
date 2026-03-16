@@ -14,8 +14,9 @@ export default function CTA() {
           transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
           className="text-center max-w-3xl mx-auto"
         >
-          <h2 className="text-3xl md:text-4xl lg:text-5xl font-semibold tracking-tighter leading-tight">
-            Ready to stop guessing and start knowing?
+          <h2 className="text-3xl md:text-4xl lg:text-5xl font-medium tracking-tight leading-tight">
+            <span className="font-serif">Ready to stop guessing</span>{" "}
+            <span className="font-elegant">and start knowing?</span>
           </h2>
           <p className="mt-6 text-lg text-muted leading-relaxed max-w-xl mx-auto">
             Join 50+ fashion brands already using StyleSim to make smarter

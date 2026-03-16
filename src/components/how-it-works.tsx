@@ -45,11 +45,12 @@ export default function HowItWorks() {
           transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
           className="text-center max-w-2xl mx-auto mb-16 md:mb-20"
         >
-          <p className="text-sm font-medium text-muted uppercase tracking-wider mb-4">
+          <p className="font-elegant text-lg text-muted mb-4">
             How It Works
           </p>
-          <h2 className="text-3xl md:text-4xl lg:text-5xl font-semibold tracking-tighter leading-tight">
-            From concept to confident production in four steps
+          <h2 className="text-3xl md:text-4xl lg:text-5xl font-medium tracking-tight leading-tight">
+            <span className="font-serif">From concept to</span>{" "}
+            <span className="font-elegant">confident production</span>
           </h2>
         </motion.div>
 
@@ -73,10 +74,10 @@ export default function HowItWorks() {
                 <div className="relative inline-flex items-center justify-center w-12 h-12 rounded-full bg-card border border-border mb-6 lg:mb-8">
                   <step.icon size={20} weight="regular" className="text-foreground" />
                 </div>
-                <p className="text-xs font-medium text-muted uppercase tracking-wider mb-3">
+                <p className="font-elegant text-sm text-muted mb-3">
                   Step {step.number}
                 </p>
-                <h3 className="text-lg font-semibold text-foreground mb-3">
+                <h3 className="text-lg font-serif text-foreground mb-3">
                   {step.title}
                 </h3>
                 <p className="text-muted leading-relaxed text-sm">

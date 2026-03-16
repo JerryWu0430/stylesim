@@ -38,11 +38,12 @@ export default function Testimonials() {
           transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
           className="text-center max-w-2xl mx-auto mb-16"
         >
-          <p className="text-sm font-medium text-muted uppercase tracking-wider mb-4">
+          <p className="font-elegant text-lg text-muted mb-4">
             Testimonials
           </p>
-          <h2 className="text-3xl md:text-4xl lg:text-5xl font-semibold tracking-tighter leading-tight">
-            Trusted by leading fashion brands
+          <h2 className="text-3xl md:text-4xl lg:text-5xl font-medium tracking-tight leading-tight">
+            <span className="font-serif">Trusted by</span>{" "}
+            <span className="font-elegant">leading fashion brands</span>
           </h2>
         </motion.div>
 
@@ -65,14 +66,14 @@ export default function Testimonials() {
                 weight="fill"
                 className="text-foreground/10 mb-6"
               />
-              <p className="text-foreground leading-relaxed flex-1">
+              <p className="font-serif text-foreground text-lg leading-relaxed flex-1">
                 &ldquo;{testimonial.quote}&rdquo;
               </p>
               <div className="mt-8 pt-6 border-t border-border">
-                <p className="font-semibold text-foreground">
+                <p className="font-medium text-foreground">
                   {testimonial.author}
                 </p>
-                <p className="text-sm text-muted mt-1">
+                <p className="font-elegant text-sm text-muted mt-1">
                   {testimonial.role}, {testimonial.company}
                 </p>
               </div>

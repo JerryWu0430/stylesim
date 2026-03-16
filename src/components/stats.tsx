@@ -22,8 +22,9 @@ export default function Stats() {
         >
           <div className="grid lg:grid-cols-5 gap-12 lg:gap-8 items-center">
             <div className="lg:col-span-2">
-              <h2 className="text-3xl md:text-4xl font-semibold tracking-tighter leading-tight text-background">
-                Results that speak for themselves
+              <h2 className="text-3xl md:text-4xl font-medium tracking-tight leading-tight text-background">
+                <span className="font-serif">Results that</span>{" "}
+                <span className="font-elegant">speak for themselves</span>
               </h2>
               <p className="mt-4 text-background/70 leading-relaxed">
                 Fashion brands using StyleSim see dramatic improvements in their
@@ -45,10 +46,10 @@ export default function Stats() {
                   }}
                   className="text-center lg:text-left"
                 >
-                  <p className="text-3xl md:text-4xl font-semibold text-background tracking-tight">
+                  <p className="font-serif text-3xl md:text-4xl text-background tracking-tight">
                     {stat.value}
                   </p>
-                  <p className="text-sm text-background/60 mt-2">{stat.label}</p>
+                  <p className="font-elegant text-sm text-background/60 mt-2">{stat.label}</p>
                 </motion.div>
               ))}
             </div>

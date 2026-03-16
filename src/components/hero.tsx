@@ -22,9 +22,9 @@ export default function Hero() {
               </span>
             </div>
 
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-semibold tracking-tighter leading-[1.1]">
-              Simulate fashion demand{" "}
-              <span className="text-muted">before you manufacture</span>
+            <h1 className="text-4xl md:text-5xl lg:text-6xl font-medium tracking-tight leading-[1.1]">
+              <span className="font-serif">Simulate fashion demand</span>{" "}
+              <span className="font-elegant text-muted">before you manufacture</span>
             </h1>
 
             <p className="text-lg md:text-xl text-muted leading-relaxed max-w-xl">

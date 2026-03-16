@@ -41,8 +41,8 @@ export default function Footer() {
               className="h-8 w-auto"
             />
             <p className="mt-4 text-sm text-muted leading-relaxed max-w-xs">
-              AI-powered demand simulation for fashion brands. Predict what
-              sells before you produce.
+              AI-powered demand simulation for fashion brands.{" "}
+              <span className="font-elegant">Predict what sells before you produce.</span>
             </p>
             <div className="mt-6 flex items-center gap-4">
               {socials.map((social) => (
