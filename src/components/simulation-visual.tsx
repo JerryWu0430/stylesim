@@ -1,14 +1,52 @@
 "use client";
 
-import { motion } from "framer-motion";
-import { TrendUp, TrendDown, Minus } from "@phosphor-icons/react";
-import { memo } from "react";
+import { motion, AnimatePresence } from "framer-motion";
+import { TrendUp, TrendDown, Minus, Lightning, Warning, CheckCircle, ArrowUp, ArrowDown } from "@phosphor-icons/react";
+import { memo, useState, useEffect } from "react";
 
 const products = [
   { name: "Linen Blazer", demand: 87, trend: "up", color: "#2d2d2d" },
   { name: "Silk Midi Skirt", demand: 64, trend: "up", color: "#6b6b6b" },
   { name: "Cotton Cardigan", demand: 45, trend: "neutral", color: "#8b8b8b" },
   { name: "Wool Coat", demand: 23, trend: "down", color: "#ababab" },
+];
+
+const alerts = [
+  {
+    type: "success",
+    icon: ArrowUp,
+    title: "Increase Linen Blazer",
+    message: "Production +40% recommended",
+    color: "emerald",
+  },
+  {
+    type: "warning",
+    icon: Warning,
+    title: "Wool Coat Alert",
+    message: "Reduce order by 25 units",
+    color: "amber",
+  },
+  {
+    type: "info",
+    icon: Lightning,
+    title: "Trending: Silk Midi",
+    message: "Social buzz up 156%",
+    color: "blue",
+  },
+  {
+    type: "success",
+    icon: CheckCircle,
+    title: "Price Optimization",
+    message: "Blazer margin +12% possible",
+    color: "emerald",
+  },
+  {
+    type: "warning",
+    icon: ArrowDown,
+    title: "Cardigan Demand",
+    message: "Consider size rebalancing",
+    color: "amber",
+  },
 ];
 
 const DemandBar = memo(function DemandBar({
@@ -62,6 +100,88 @@ const PulsingDot = memo(function PulsingDot() {
   );
 });
 
+const AlertCard = memo(function AlertCard() {
+  const [currentIndex, setCurrentIndex] = useState(0);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentIndex((prev) => (prev + 1) % alerts.length);
+    }, 3000);
+    return () => clearInterval(interval);
+  }, []);
+
+  const alert = alerts[currentIndex];
+  const Icon = alert.icon;
+
+  const colorClasses = {
+    emerald: {
+      bg: "bg-emerald-50",
+      icon: "text-emerald-600",
+      border: "border-emerald-100",
+    },
+    amber: {
+      bg: "bg-amber-50",
+      icon: "text-amber-600",
+      border: "border-amber-100",
+    },
+    blue: {
+      bg: "bg-blue-50",
+      icon: "text-blue-600",
+      border: "border-blue-100",
+    },
+  };
+
+  const colors = colorClasses[alert.color as keyof typeof colorClasses];
+
+  return (
+    <motion.div
+      initial={{ opacity: 0, x: 20 }}
+      animate={{ opacity: 1, x: 0 }}
+      transition={{ delay: 0.8, duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
+      className="absolute -bottom-4 -right-4 hidden md:block"
+    >
+      <div className={`bg-card rounded-2xl border border-border p-4 shadow-lg min-w-[220px] overflow-hidden`}>
+        <div className="flex items-center gap-2 mb-2">
+          <span className="text-xs text-muted">Recommended Action</span>
+          <div className="flex gap-1 ml-auto">
+            {alerts.map((_, i) => (
+              <span
+                key={i}
+                className={`w-1 h-1 rounded-full transition-colors duration-300 ${
+                  i === currentIndex ? "bg-foreground" : "bg-border"
+                }`}
+              />
+            ))}
+          </div>
+        </div>
+
+        <AnimatePresence mode="wait">
+          <motion.div
+            key={currentIndex}
+            initial={{ opacity: 0, y: 10 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -10 }}
+            transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] }}
+            className="flex items-start gap-3"
+          >
+            <div className={`p-2 rounded-xl ${colors.bg} ${colors.border} border`}>
+              <Icon size={16} weight="bold" className={colors.icon} />
+            </div>
+            <div className="flex-1 min-w-0">
+              <p className="text-sm font-medium text-foreground truncate">
+                {alert.title}
+              </p>
+              <p className="text-xs text-muted mt-0.5">
+                {alert.message}
+              </p>
+            </div>
+          </motion.div>
+        </AnimatePresence>
+      </div>
+    </motion.div>
+  );
+});
+
 export default function SimulationVisual() {
   return (
     <div className="relative">
@@ -106,15 +226,7 @@ export default function SimulationVisual() {
         </div>
       </motion.div>
 
-      <motion.div
-        initial={{ opacity: 0, x: 20 }}
-        animate={{ opacity: 1, x: 0 }}
-        transition={{ delay: 0.8, duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
-        className="absolute -bottom-4 -right-4 bg-card rounded-2xl border border-border p-4 shadow-lg hidden md:block"
-      >
-        <p className="text-xs text-muted mb-2">Recommended Action</p>
-        <p className="text-sm font-medium text-foreground">Increase Linen Blazer production by 40%</p>
-      </motion.div>
+      <AlertCard />
     </div>
   );
 }
