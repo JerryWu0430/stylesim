@@ -6,13 +6,18 @@ import {
   Target,
   ChartLine,
   Recycle,
-  Lightning,
   ShieldCheck,
-  TrendUp,
   Package,
+  ArrowUp,
+  ArrowDown,
+  Fire,
+  Users,
 } from "@phosphor-icons/react";
 import { useRef, useState } from "react";
 import { cn } from "@/lib/utils";
+import { AnimatedList } from "@/components/ui/animated-list";
+import { Marquee } from "@/components/ui/marquee";
+import BentoCard from "@/components/ui/bento-card";
 
 // Analytics Chart Card - shows demand prediction accuracy
 function DemandChart() {
@@ -151,7 +156,7 @@ function DemandChart() {
             transform: "translateX(-50%)",
           }}
         >
-          {demandData[hoveredIndex].predicted} units
+          {demandData[hoveredIndex].predicted}£
         </motion.div>
       )}
     </div>
@@ -239,34 +244,84 @@ function WasteReduction() {
   );
 }
 
-// Integration visual
-function IntegrationFlow() {
-  const integrations = ["Shopify", "SAP", "Oracle", "Custom API"];
+// Real-time action notifications
+const notifications = [
+  { icon: ArrowUp, text: "Increase: Wool Coat", change: "+15%", type: "up" as const },
+  { icon: Fire, text: "Trending: Oversized Blazer", change: "Hot", type: "hot" as const },
+  { icon: ArrowDown, text: "Reduce: Silk Blouse", change: "-20%", type: "down" as const },
+  { icon: ArrowUp, text: "Restock: Linen Pants", change: "+8%", type: "up" as const },
+  { icon: Fire, text: "Viral: Pleated Skirt", change: "Hot", type: "hot" as const },
+];
 
+function RealtimeNotifications() {
   return (
-    <div className="flex flex-col gap-2">
-      {integrations.map((name, i) => (
-        <motion.div
-          key={name}
-          initial={{ x: -20, opacity: 0 }}
-          animate={{ x: 0, opacity: 1 }}
-          transition={{ delay: i * 0.1 }}
-          className="flex items-center gap-3 bg-foreground/5 rounded-lg px-3 py-2"
+    <AnimatedList delay={2000} className="gap-2">
+      {notifications.map((item, idx) => (
+        <div
+          key={idx}
+          className="flex items-center gap-2 bg-foreground/5 rounded-lg px-3 py-2 text-xs w-full"
         >
-          <div className="w-2 h-2 rounded-full bg-foreground/60" />
-          <span className="text-sm text-foreground/80">{name}</span>
-          <motion.div
-            className="ml-auto"
-            initial={{ scale: 0 }}
-            animate={{ scale: 1 }}
-            transition={{ delay: i * 0.1 + 0.3 }}
+          <item.icon
+            size={14}
+            weight="bold"
+            className={cn(
+              item.type === "up" && "text-green-600",
+              item.type === "down" && "text-red-500",
+              item.type === "hot" && "text-orange-500"
+            )}
+          />
+          <span className="text-foreground/80 flex-1 truncate">{item.text}</span>
+          <span
+            className={cn(
+              "font-medium",
+              item.type === "up" && "text-green-600",
+              item.type === "down" && "text-red-500",
+              item.type === "hot" && "text-orange-500"
+            )}
           >
-            <div className="w-4 h-4 rounded-full bg-foreground/10 flex items-center justify-center">
-              <div className="w-2 h-2 rounded-full bg-foreground" />
-            </div>
-          </motion.div>
-        </motion.div>
+            {item.change}
+          </span>
+        </div>
       ))}
+    </AnimatedList>
+  );
+}
+
+// Persona comments for simulation marquee
+const personas = [
+  { name: "Gen Z Trendsetter", age: "19", comment: "Love the oversized fit!", avatar: "👧" },
+  { name: "Minimalist Mom", age: "34", comment: "Clean lines, perfect for work", avatar: "👩" },
+  { name: "Eco-Conscious", age: "28", comment: "Is this sustainable fabric?", avatar: "🧑" },
+  { name: "Luxury Shopper", age: "45", comment: "Quality looks premium", avatar: "👨" },
+  { name: "Y2K Revivalist", age: "22", comment: "Needs more color tbh", avatar: "👱‍♀️" },
+  { name: "Classic Dresser", age: "52", comment: "Timeless silhouette", avatar: "👴" },
+  { name: "Streetwear Fan", age: "25", comment: "Would style with sneakers", avatar: "🧔" },
+  { name: "Budget Hunter", age: "31", comment: "Great value at this price", avatar: "👩‍🦰" },
+];
+
+function PersonaCard({ persona }: { persona: typeof personas[0] }) {
+  return (
+    <div className="flex flex-col bg-background border border-border rounded-xl p-3 w-[180px] shadow-sm">
+      <div className="flex items-center gap-2 mb-2">
+        <span className="text-xl">{persona.avatar}</span>
+        <div className="flex-1 min-w-0">
+          <p className="text-xs font-medium text-foreground truncate">{persona.name}</p>
+          <p className="text-[10px] text-muted-foreground">Age {persona.age}</p>
+        </div>
+      </div>
+      <p className="text-xs text-foreground/70 italic">&ldquo;{persona.comment}&rdquo;</p>
+    </div>
+  );
+}
+
+function SimulationMarquee() {
+  return (
+    <div className="relative overflow-hidden">
+      <Marquee pauseOnHover className="[--duration:25s]">
+        {personas.map((persona, idx) => (
+          <PersonaCard key={idx} persona={persona} />
+        ))}
+      </Marquee>
     </div>
   );
 }
@@ -323,125 +378,97 @@ export default function Features() {
           variants={containerVariants}
           initial="hidden"
           animate={isInView ? "visible" : "hidden"}
-          className="mt-16 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 auto-rows-[180px]"
+          className="mt-16 grid grid-cols-1 md:grid-cols-12 gap-3"
         >
-          {/* AI Demand Prediction - Large card */}
+          {/* Demand Intelligence */}
           <motion.div
             variants={itemVariants}
-            className="col-span-1 md:col-span-2 row-span-2 group relative overflow-hidden rounded-[24px] bg-card border border-border p-6 hover:border-foreground/20 transition-all duration-300"
+            className="col-span-1 md:col-span-5 md:row-span-2"
           >
-            <div className="flex items-center gap-2 mb-4">
-              <div className="w-10 h-10 rounded-xl bg-foreground/5 flex items-center justify-center">
-                <Brain size={20} className="text-foreground" />
-              </div>
-              <div>
-                <h3 className="text-lg font-serif text-foreground">AI Demand Prediction</h3>
-                <p className="text-xs text-muted-foreground">Trend analysis & forecasting</p>
-              </div>
+            <BentoCard />
+          </motion.div>
+
+          {/* Production Saving */}
+          <motion.div
+            variants={itemVariants}
+            className="col-span-1 md:col-span-4 md:row-span-2 group relative overflow-hidden rounded-3xl bg-card border border-border p-5 hover:border-foreground/20 transition-all duration-300 shadow-xl shadow-primary/5"
+          >
+            <div className="mb-3">
+              <p className="text-xs text-muted-foreground uppercase">Production Saving</p>
+              <h3 className="text-lg sm:text-xl font-medium text-foreground leading-snug">Predict demand, cut costs.</h3>
             </div>
-            <div className="h-[calc(100%-80px)]">
+            <div className="h-[260px]">
               <DemandChart />
             </div>
           </motion.div>
 
-          {/* SKU-Level Insights */}
+          {/* Waste Reduction - compact */}
           <motion.div
             variants={itemVariants}
-            className="col-span-1 row-span-2 group relative overflow-hidden rounded-[24px] bg-card border border-border p-6 hover:border-foreground/20 transition-all duration-300"
+            className="col-span-1 md:col-span-3 group relative overflow-hidden rounded-3xl bg-card border border-border hover:border-foreground/20 transition-all duration-300 shadow-xl shadow-primary/5"
           >
-            <div className="flex items-center gap-2 mb-4">
-              <div className="w-10 h-10 rounded-xl bg-foreground/5 flex items-center justify-center">
-                <Target size={20} className="text-foreground" />
-              </div>
-            </div>
-            <h3 className="text-lg font-serif text-foreground mb-1">SKU-Level Insights</h3>
-            <p className="text-xs text-muted-foreground mb-4">Every style, color & size</p>
-            <SKUGrid />
+            <WasteReduction />
           </motion.div>
 
-          {/* Real-Time Analytics */}
+          {/* Real-Time Analytics - stacked right */}
           <motion.div
             variants={itemVariants}
-            className="col-span-1 group relative overflow-hidden rounded-[24px] bg-card border border-border p-6 hover:border-foreground/20 transition-all duration-300"
+            className="col-span-1 md:col-span-3 group relative overflow-hidden rounded-3xl bg-card border border-border p-5 hover:border-foreground/20 transition-all duration-300 shadow-xl shadow-primary/5"
           >
-            <div className="flex items-center justify-between">
-              <ChartLine size={24} className="text-foreground" />
+            <div className="flex items-center justify-between mb-2">
+              <p className="text-xs text-muted-foreground uppercase">Real-Time</p>
               <div className="flex items-center gap-1 text-xs text-muted-foreground">
                 <span className="w-2 h-2 rounded-full bg-green-500 animate-pulse" />
                 Live
               </div>
             </div>
-            <h3 className="text-lg font-serif text-foreground mt-3">Real-Time</h3>
-            <p className="text-xs text-muted-foreground">Monitor demand shifts as they happen</p>
-            <motion.div
-              className="absolute bottom-4 right-4 flex items-center gap-1"
-              animate={{ x: [0, 5, 0] }}
-              transition={{ duration: 2, repeat: Infinity }}
-            >
-              <TrendUp size={16} className="text-foreground/40" />
-            </motion.div>
-          </motion.div>
-
-          {/* Waste Reduction */}
-          <motion.div
-            variants={itemVariants}
-            className="col-span-1 group relative overflow-hidden rounded-[24px] bg-card border border-border hover:border-foreground/20 transition-all duration-300"
-          >
-            <WasteReduction />
-          </motion.div>
-
-          {/* Fast Integration */}
-          <motion.div
-            variants={itemVariants}
-            className="col-span-1 md:col-span-2 group relative overflow-hidden rounded-[24px] bg-card border border-border p-6 hover:border-foreground/20 transition-all duration-300"
-          >
-            <div className="flex gap-6">
-              <div className="flex-1">
-                <div className="flex items-center gap-2 mb-2">
-                  <Lightning size={20} className="text-foreground" />
-                  <h3 className="text-lg font-serif text-foreground">Fast Integration</h3>
-                </div>
-                <p className="text-xs text-muted-foreground mb-4">Connect in hours, not weeks</p>
-                <IntegrationFlow />
-              </div>
-              <div className="hidden md:flex items-center justify-center w-24">
-                <motion.div
-                  className="text-4xl font-serif text-foreground/20"
-                  animate={{ opacity: [0.2, 0.5, 0.2] }}
-                  transition={{ duration: 3, repeat: Infinity }}
-                >
-                  →
-                </motion.div>
-              </div>
+            <h3 className="text-base font-medium text-foreground leading-snug mb-3">AI recommendations.</h3>
+            <div className="h-[140px] overflow-hidden">
+              <RealtimeNotifications />
             </div>
           </motion.div>
 
           {/* Enterprise Security */}
           <motion.div
             variants={itemVariants}
-            className="col-span-1 md:col-span-2 group relative overflow-hidden rounded-[24px] bg-foreground text-background p-6 hover:bg-foreground/90 transition-all duration-300"
+            className="col-span-1 md:col-span-3 group relative overflow-hidden rounded-3xl bg-foreground text-background p-5 hover:bg-foreground/90 transition-all duration-300 shadow-xl shadow-primary/5"
           >
-            <div className="flex items-start justify-between">
-              <div>
-                <div className="flex items-center gap-2 mb-2">
-                  <ShieldCheck size={20} className="text-background" />
-                  <h3 className="text-lg font-serif">Enterprise Security</h3>
-                </div>
-                <p className="text-sm text-background/70 max-w-xs">
-                  SOC 2 Type II certified. Your design data stays yours, always.
-                </p>
+            <p className="text-xs text-background/60 uppercase">Security</p>
+            <h3 className="text-base font-medium leading-snug mt-1">SOC 2 Type II certified.</h3>
+            <div className="flex flex-col gap-1.5 mt-3">
+              <div className="flex items-center gap-2 bg-background/10 rounded-full px-2.5 py-1 w-fit">
+                <Package size={12} />
+                <span className="text-[11px]">Encrypted</span>
               </div>
-              <div className="flex flex-col items-end gap-2">
-                <div className="flex items-center gap-2 bg-background/10 rounded-full px-3 py-1">
-                  <Package size={14} />
-                  <span className="text-xs">End-to-end encrypted</span>
-                </div>
-                <div className="flex items-center gap-2 bg-background/10 rounded-full px-3 py-1">
-                  <ShieldCheck size={14} />
-                  <span className="text-xs">SOC 2 Type II</span>
-                </div>
+              <div className="flex items-center gap-2 bg-background/10 rounded-full px-2.5 py-1 w-fit">
+                <ShieldCheck size={12} />
+                <span className="text-[11px]">SOC 2</span>
               </div>
             </div>
+          </motion.div>
+
+          {/* SKU-Level Insights */}
+          <motion.div
+            variants={itemVariants}
+            className="col-span-1 md:col-span-3 group relative overflow-hidden rounded-3xl bg-card border border-border p-5 hover:border-foreground/20 transition-all duration-300 shadow-xl shadow-primary/5"
+          >
+            <div className="mb-3">
+              <p className="text-xs text-muted-foreground uppercase">SKU Insights</p>
+              <h3 className="text-base font-medium text-foreground leading-snug">Every style, color & size.</h3>
+            </div>
+            <SKUGrid />
+          </motion.div>
+
+          {/* Audience Simulation - wide bottom */}
+          <motion.div
+            variants={itemVariants}
+            className="col-span-1 md:col-span-6 group relative overflow-hidden rounded-3xl bg-card border border-border p-5 hover:border-foreground/20 transition-all duration-300 shadow-xl shadow-primary/5"
+          >
+            <div className="mb-3">
+              <p className="text-xs text-muted-foreground uppercase">Audience Simulation</p>
+              <h3 className="text-lg font-medium text-foreground leading-snug">See how personas react to your designs.</h3>
+            </div>
+            <SimulationMarquee />
           </motion.div>
         </motion.div>
       </div>

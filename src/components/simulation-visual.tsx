@@ -133,7 +133,7 @@ const AlertCard = memo(function AlertCard() {
       initial={{ opacity: 0, x: 20 }}
       animate={{ opacity: 1, x: 0 }}
       transition={{ delay: 0.8, duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
-      className="absolute -bottom-4 -right-4 hidden md:block"
+      className="absolute -bottom-18 -right-12 hidden md:block"
     >
       <div className={`bg-card rounded-2xl border border-border p-4 shadow-lg min-w-[220px] overflow-hidden`}>
         <div className="flex items-center gap-2 mb-2">
@@ -210,7 +210,7 @@ export default function SimulationVisual() {
               <p className="text-xs text-muted-foreground mt-1">Projected Units</p>
             </div>
             <div>
-              <p className="text-2xl font-semibold text-accent">+34%</p>
+              <p className="text-2xl font-semibold text-foreground">+34%</p>
               <p className="text-xs text-muted-foreground mt-1">vs Last Season</p>
             </div>
             <div>

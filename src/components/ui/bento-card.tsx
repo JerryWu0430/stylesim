@@ -34,33 +34,33 @@ interface TabConfig {
 const TABS: TabConfig[] = [
   {
     id: "dashboard",
-    label: "Dashboard",
+    label: "Forecast",
     icon: DashboardSquare01Icon,
-    header: "Project Overview",
-    description: "Daily summary of your team performance.",
+    header: "Demand Overview",
+    description: "Real-time collection performance metrics.",
   },
   {
     id: "management",
-    label: "Management",
+    label: "SKUs",
     icon: UserGroupIcon,
-    header: "Team Management",
-    description: "Manage roles and user permissions.",
-    badge: "10",
+    header: "SKU Performance",
+    description: "Track every style, color and size.",
+    badge: "24",
   },
   {
     id: "threads",
-    label: "Threads",
+    label: "Actions",
     icon: Message01Icon,
-    header: "Communications",
-    description: "High-priority team discussions.",
-    badge: "12",
+    header: "Recommendations",
+    description: "AI-suggested production adjustments.",
+    badge: "5",
   },
   {
     id: "resources",
-    label: "Resources",
+    label: "Reports",
     icon: Folder02Icon,
-    header: "System Assets",
-    description: "Shared documentation and media logs.",
+    header: "Export & Logs",
+    description: "Download forecasts and audit trails.",
   },
 ];
 
@@ -83,15 +83,14 @@ const BentoCard = () => {
   }, [activeTab.id]);
 
   return (
-    <div className="flex items-center justify-center w-full antialiased">
-      <div className="group relative w-full max-w-xl overflow-hidden rounded-3xl sm:rounded-4xl border bg-card shadow-2xl shadow-primary/5 transition-all duration-500 hover:shadow-primary/10 hover:-translate-y-1 m-0">
+    <div className="w-full h-full antialiased">
+      <div className="group relative w-full h-full overflow-hidden rounded-3xl border bg-card shadow-2xl shadow-primary/5 transition-all duration-500 hover:shadow-primary/10 hover:-translate-y-1">
         <div className="p-4 sm:p-6 space-y-1.5 z-10 relative">
           <h2 className="text-xs text-muted-foreground uppercase ">
-            Project Dashboard
+            Demand Intelligence
           </h2>
           <p className="text-lg sm:text-2xl text-foreground font-medium leading-snug max-w-[480px]">
-            High-performance analytics and team collaboration tools in one
-            place.
+            Forecast demand, optimize production, and eliminate waste — all in one dashboard.
           </p>
         </div>
 
@@ -220,7 +219,7 @@ const OverviewDashboard = () => (
       <div className="flex flex-col gap-2 relative z-10">
         <div className="flex items-center justify-between">
           <span className="text-[9px] font-medium text-muted-foreground">
-            Team Performance
+            Forecast Accuracy
           </span>
           <HugeiconsIcon
             icon={CircleArrowUpRight02Icon}
@@ -230,18 +229,18 @@ const OverviewDashboard = () => (
         </div>
         <div className="flex flex-col gap-0.5">
           <span className="text-xl font-medium tracking-tight text-foreground">
-            94.2%
+            91.8%
           </span>
           <div className="w-full h-1 bg-muted rounded-full overflow-hidden mt-1">
             <motion.div
               initial={{ width: 0 }}
-              animate={{ width: "94.2%" }}
+              animate={{ width: "91.8%" }}
               className="h-full bg-primary rounded-full"
             />
           </div>
         </div>
         <span className="text-[9px] text-muted-foreground">
-          Score for Search & Delivery campaigns
+          Spring 2026 Collection predictions
         </span>
       </div>
       <div className="absolute -right-2 -bottom-2 opacity-5 scale-150 rotate-12">
@@ -252,18 +251,18 @@ const OverviewDashboard = () => (
     <div className="grid grid-cols-2 gap-2">
       <div className="p-3 rounded-xl border border-border/40 bg-background/50 flex items-center justify-between">
         <div className="flex flex-col">
-          <span className="text-[10px] font-medium text-foreground">1,070</span>
+          <span className="text-[10px] font-medium text-foreground">2,847</span>
           <span className="text-[8px] text-muted-foreground uppercase font-medium">
-            Keywords
+            SKUs Tracked
           </span>
         </div>
         <HugeiconsIcon icon={Search01Icon} size={14} className="opacity-20" />
       </div>
       <div className="p-3 rounded-xl border border-border/40 bg-background/50 flex items-center justify-between">
         <div className="flex flex-col">
-          <span className="text-[10px] font-medium text-foreground">2.3M</span>
+          <span className="text-[10px] font-medium text-foreground">-68%</span>
           <span className="text-[8px] text-muted-foreground uppercase font-medium">
-            Credits
+            Waste Reduced
           </span>
         </div>
         <HugeiconsIcon
@@ -281,7 +280,7 @@ const ManagementDashboard = () => (
     <div className="rounded-xl border border-border/40 overflow-hidden flex flex-col h-full bg-background/50">
       <div className="bg-muted/30 px-3 py-2 border-b border-border/40 flex items-center justify-between">
         <span className="text-[9px] font-semibold text-muted-foreground uppercase tracking-wider">
-          Active Users
+          Top Performers
         </span>
         <div className="flex items-center gap-1.5 px-1.5 py-0.5 rounded-md bg-background border border-border/40">
           <HugeiconsIcon
@@ -290,54 +289,54 @@ const ManagementDashboard = () => (
             className="text-muted-foreground/50"
           />
           <span className="text-[8px] text-muted-foreground font-medium">
-            Search
+            Filter
           </span>
         </div>
       </div>
       <div className="p-1 flex flex-col gap-0.5">
         {[
           {
-            name: "Anthony Dionne",
-            role: "Pending admin approval",
-            status: "Waitlist",
-            color: "bg-amber-400",
+            name: "Wool Coat - Camel",
+            role: "Predicted: 2,340 units",
+            status: "Hot",
+            color: "bg-orange-400",
           },
           {
-            name: "Nick Yahodin",
-            role: "Dealership group admin",
-            status: "Active",
+            name: "Linen Blazer - Navy",
+            role: "Predicted: 1,890 units",
+            status: "Rising",
             color: "bg-emerald-400",
           },
           {
-            name: "Mujeeb Aimaq",
-            role: "Dealership group user",
-            status: "Active",
-            color: "bg-emerald-400",
+            name: "Silk Midi Skirt",
+            role: "Predicted: 1,560 units",
+            status: "Stable",
+            color: "bg-blue-400",
           },
-        ].map((user, i) => (
+        ].map((sku, i) => (
           <div
             key={i}
             className="flex items-center gap-3 p-2 rounded-lg hover:bg-muted/30 transition-colors group"
           >
-            <div className="w-6 h-6 rounded-full bg-muted border border-border/40 flex items-center justify-center relative">
+            <div className="w-6 h-6 rounded-md bg-muted border border-border/40 flex items-center justify-center relative">
               <HugeiconsIcon
-                icon={UserIcon}
+                icon={LeftToRightListDashIcon}
                 size={10}
                 className="text-muted-foreground"
               />
               <div
                 className={cn(
                   "absolute -bottom-0.5 -right-0.5 w-2 h-2 rounded-full border border-background",
-                  user.color,
+                  sku.color,
                 )}
               />
             </div>
             <div className="flex flex-col min-w-0 flex-1">
               <span className="text-[10px] font-medium text-foreground truncate">
-                {user.name}
+                {sku.name}
               </span>
               <span className="text-[8px] text-muted-foreground truncate">
-                {user.role}
+                {sku.role}
               </span>
             </div>
             <div className="opacity-0 group-hover:opacity-100 transition-opacity">
@@ -359,13 +358,13 @@ const ThreadsDashboard = () => (
     <div className="grid grid-cols-2 gap-3">
       {[
         {
-          title: "Create a Page",
-          desc: "Build your project base.",
-          icon: Folder02Icon,
+          title: "Increase Production",
+          desc: "Wool Coat +15%",
+          icon: CircleArrowUpRight02Icon,
         },
         {
-          title: "Create a Task",
-          desc: "Organize with team.",
+          title: "Reduce Order",
+          desc: "Silk Blouse -20%",
           icon: Tick01Icon,
         },
       ].map((card, i) => (
@@ -382,8 +381,8 @@ const ThreadsDashboard = () => (
             </span>
           </div>
           <button className="w-fit flex items-center gap-1.5 px-2 py-1 rounded-md bg-foreground text-background text-[8px] font-semibold transition-transform active:scale-95 group-hover:bg-primary z-10">
-            <HugeiconsIcon icon={Add01Icon} size={8} strokeWidth={3} />
-            Create
+            <HugeiconsIcon icon={Tick01Icon} size={8} strokeWidth={3} />
+            Apply
           </button>
         </div>
       ))}
@@ -399,7 +398,7 @@ const ThreadsDashboard = () => (
           />
         </div>
         <span className="text-[9px] text-muted-foreground font-medium">
-          Pin a new item
+          3 more suggestions
         </span>
       </div>
       <HugeiconsIcon
@@ -416,7 +415,7 @@ const ResourcesDashboard = () => (
     <div className="flex-1 rounded-xl border border-border/40 flex flex-col bg-background/50 overflow-hidden">
       <div className="bg-muted/30 px-3 py-2 border-b border-border/40 flex items-center justify-between">
         <span className="text-[9px] font-semibold text-muted-foreground uppercase tracking-wider">
-          Archives & Logs
+          Recent Exports
         </span>
         <HugeiconsIcon
           icon={DatabaseIcon}
@@ -427,25 +426,25 @@ const ResourcesDashboard = () => (
       <div className="flex-1 p-1 overflow-y-auto scrollbar-hide">
         {[
           {
-            file: "design_spec_v2.pdf",
+            file: "spring_2026_forecast.pdf",
             size: "2.4 MB",
             type: "PDF",
-            icon: Mail01Icon,
+            icon: BarChartIcon,
           },
           {
-            file: "q4_performance.xls",
+            file: "sku_performance.xls",
             size: "1.1 MB",
             type: "XLS",
             icon: BarChartIcon,
           },
           {
-            file: "branding_assets.zip",
-            size: "48 MB",
-            type: "ZIP",
+            file: "production_plan.csv",
+            size: "340 KB",
+            type: "CSV",
             icon: Folder02Icon,
           },
           {
-            file: "system_logs.json",
+            file: "audit_log_mar.json",
             size: "4 KB",
             type: "JSON",
             icon: Folder02Icon,
