@@ -29,8 +29,8 @@ const socials = [
 
 export default function Footer() {
   return (
-    <footer className="border-t border-border bg-foreground/[0.02]">
-      <div className="max-w-7xl mx-auto px-6 md:px-8 py-16 md:py-20">
+    <footer className="py-16 md:py-20">
+      <div className="max-w-7xl mx-auto px-6 md:px-8">
         <div className="grid lg:grid-cols-5 gap-12 lg:gap-8">
           <div className="lg:col-span-2">
             <Image
