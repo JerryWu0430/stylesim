@@ -391,13 +391,13 @@ export default function Features() {
           {/* Production Saving */}
           <motion.div
             variants={itemVariants}
-            className="col-span-1 md:col-span-4 md:row-span-2 group relative overflow-hidden rounded-3xl bg-card border border-border p-5 hover:border-foreground/20 transition-all duration-300 shadow-xl shadow-primary/5"
+            className="col-span-1 md:col-span-4 md:row-span-2 group relative overflow-hidden rounded-3xl bg-card border border-border p-5 hover:border-foreground/20 transition-all duration-300 shadow-xl shadow-primary/5 flex flex-col"
           >
             <div className="mb-3">
               <p className="text-xs text-muted-foreground uppercase">Production Saving</p>
               <h3 className="text-lg sm:text-xl font-medium text-foreground leading-snug">Predict demand, cut costs.</h3>
             </div>
-            <div className="h-[260px]">
+            <div className="flex-1 flex flex-col justify-end">
               <DemandChart />
             </div>
           </motion.div>
@@ -433,16 +433,25 @@ export default function Features() {
             variants={itemVariants}
             className="col-span-1 md:col-span-3 group relative overflow-hidden rounded-3xl bg-foreground text-background p-5 hover:bg-foreground/90 transition-all duration-300 shadow-xl shadow-primary/5"
           >
-            <p className="text-xs text-background/60 uppercase">Security</p>
-            <h3 className="text-base font-medium leading-snug mt-1">SOC 2 Type II certified.</h3>
-            <div className="flex flex-col gap-1.5 mt-3">
-              <div className="flex items-center gap-2 bg-background/10 rounded-full px-2.5 py-1 w-fit">
-                <Package size={12} />
-                <span className="text-[11px]">Encrypted</span>
-              </div>
-              <div className="flex items-center gap-2 bg-background/10 rounded-full px-2.5 py-1 w-fit">
-                <ShieldCheck size={12} />
-                <span className="text-[11px]">SOC 2</span>
+            <svg
+              className="absolute -right-6 -bottom-6 w-32 h-32 text-background/10"
+              viewBox="0 0 24 24"
+              fill="currentColor"
+            >
+              <path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4zm0 2.18l7 3.12v5.7c0 4.83-3.23 9.13-7 10.36-3.77-1.23-7-5.53-7-10.36V6.3l7-3.12zm-1 5.82v6h2v-6h-2zm0 8v2h2v-2h-2z" />
+            </svg>
+            <div className="relative z-10">
+              <p className="text-xs text-background/60 uppercase">Security</p>
+              <h3 className="text-base font-medium leading-snug mt-1">SOC 2 Type II certified.</h3>
+              <div className="flex flex-col gap-1.5 mt-3">
+                <div className="flex items-center gap-2 bg-background/10 rounded-full px-2.5 py-1 w-fit">
+                  <Package size={12} />
+                  <span className="text-[11px]">Encrypted</span>
+                </div>
+                <div className="flex items-center gap-2 bg-background/10 rounded-full px-2.5 py-1 w-fit">
+                  <ShieldCheck size={12} />
+                  <span className="text-[11px]">SOC 2</span>
+                </div>
               </div>
             </div>
           </motion.div>
@@ -462,13 +471,15 @@ export default function Features() {
           {/* Audience Simulation - wide bottom */}
           <motion.div
             variants={itemVariants}
-            className="col-span-1 md:col-span-6 group relative overflow-hidden rounded-3xl bg-card border border-border p-5 hover:border-foreground/20 transition-all duration-300 shadow-xl shadow-primary/5"
+            className="col-span-1 md:col-span-6 group relative overflow-hidden rounded-3xl bg-card border border-border p-5 hover:border-foreground/20 transition-all duration-300 shadow-xl shadow-primary/5 flex flex-col"
           >
             <div className="mb-3">
               <p className="text-xs text-muted-foreground uppercase">Audience Simulation</p>
               <h3 className="text-lg font-medium text-foreground leading-snug">See how personas react to your designs.</h3>
             </div>
-            <SimulationMarquee />
+            <div className="flex-1 flex items-center">
+              <SimulationMarquee />
+            </div>
           </motion.div>
         </motion.div>
       </div>
