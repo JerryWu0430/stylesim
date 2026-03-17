@@ -112,7 +112,7 @@ export default function Footer() {
             2026 StyleSim. All rights reserved.
           </p>
           <p className="text-sm text-muted-foreground">
-            Made with care in San Francisco
+            Made with care by @therealjerrywu
           </p>
         </div>
       </div>
