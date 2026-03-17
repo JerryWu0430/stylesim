@@ -2,6 +2,7 @@
 
 import { motion } from "framer-motion";
 import { UploadSimple, Cpu, ChartLineUp, CheckCircle } from "@phosphor-icons/react";
+import Grainient from "./grainient";
 
 const steps = [
   {
@@ -36,8 +37,26 @@ const steps = [
 
 export default function HowItWorks() {
   return (
-    <section id="how-it-works" className="py-24 md:py-32">
-      <div className="max-w-7xl mx-auto px-6 md:px-8">
+    <section id="how-it-works" className="py-24 md:py-32 relative overflow-hidden">
+      {/* Gradient Background */}
+      <div className="absolute inset-0 z-0">
+        <Grainient
+          color1="#F5F5DC"
+          color2="#E8DCC4"
+          color3="#D4C4A8"
+          grainAmount={0.05}
+          blendSoftness={0.6}
+          timeSpeed={0.5}
+          warpStrength={0.2}
+        />
+      </div>
+
+      {/* Top fade */}
+      <div className="absolute top-0 left-0 right-0 h-32 bg-gradient-to-b from-background to-transparent z-10 pointer-events-none" />
+
+      {/* Bottom fade */}
+      <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-background to-transparent z-10 pointer-events-none" />
+      <div className="max-w-7xl mx-auto px-6 md:px-8 relative z-20">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}

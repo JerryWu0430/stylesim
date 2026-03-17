@@ -17,7 +17,7 @@ export default function Hero() {
   const opacity = useTransform(scrollYProgress, [0, 0.5], [1, 0]);
 
   return (
-    <section ref={containerRef} className="relative min-h-[100dvh] pt-20 md:pt-24 overflow-hidden">
+    <section ref={containerRef} className="relative min-h-[110dvh] pt-20 md:pt-24 overflow-hidden">
       {/* Grainient Background */}
       <div className="absolute inset-0 z-0">
         <Grainient
@@ -157,7 +157,8 @@ export default function Hero() {
         </div>
       </div>
 
-      {/* Bottom fade - removed since gradient extends */}
+      {/* Bottom fade to blend into next section */}
+      <div className="absolute bottom-0 left-0 right-0 h-48 bg-gradient-to-t from-background via-background/80 to-transparent z-10 pointer-events-none" />
     </section>
   );
 }
