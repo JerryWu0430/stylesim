@@ -1,36 +1,103 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# StyleSim
+
+AI-powered demand forecasting platform for fashion brands. Simulate market demand before manufacturing to reduce waste and maximize revenue.
+
+## Tech Stack
+
+- **Framework**: Next.js 16.1.6 with React 19
+- **Styling**: Tailwind CSS 4 with custom animations
+- **Animations**: Framer Motion 12
+- **UI Components**: shadcn/ui, custom bento grid layouts
+- **Icons**: Phosphor Icons, Lucide, Tabler, HugeIcons
+- **Graphics**: OGL (WebGL), custom Grainient backgrounds
 
 ## Getting Started
 
-First, run the development server:
+### Prerequisites
+
+- Node.js 18+
+- npm/yarn/pnpm/bun
+
+### Installation
 
 ```bash
+# Clone the repository
+git clone <repo-url>
+cd stylesim
+
+# Install dependencies
+npm install
+
+# Start development server
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open [http://localhost:3000](http://localhost:3000) to view the app.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Project Structure
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+```
+src/
+├── app/
+│   ├── layout.tsx      # Root layout with fonts
+│   └── page.tsx        # Landing page composition
+├── components/
+│   ├── hero.tsx        # Hero section with simulation visual
+│   ├── features.tsx    # Bento grid feature showcase
+│   ├── how-it-works.tsx # 4-step process explanation
+│   ├── stats.tsx       # Key metrics display
+│   ├── testimonials.tsx # Team section
+│   ├── cta.tsx         # Call-to-action section
+│   ├── footer.tsx      # Site footer
+│   ├── navbar.tsx      # Navigation bar
+│   ├── grainient.tsx   # Animated gradient background
+│   └── ui/             # Reusable UI components
+│       ├── bento-card.tsx
+│       ├── team-section-1.tsx
+│       ├── marquee.tsx
+│       └── ...
+└── lib/
+    └── utils.ts        # Utility functions (cn)
+```
 
-## Learn More
+## Key Features
 
-To learn more about Next.js, take a look at the following resources:
+- **Demand Intelligence**: AI-powered demand forecasting for fashion designs
+- **Production Optimization**: Data-driven manufacturing decisions
+- **Waste Reduction**: Predicted 73% reduction in overproduction
+- **Real-Time Analytics**: Live market trend analysis
+- **SKU-Level Insights**: Granular product performance predictions
+- **Audience Simulation**: Virtual market testing before launch
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Development
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+```bash
+# Development
+npm run dev
 
-## Deploy on Vercel
+# Production build
+npm run build
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+# Start production server
+npm run start
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+# Lint
+npm run lint
+```
+
+## Design System
+
+- **Typography**: Serif + Elegant font pairing
+- **Colors**: Warm beige palette (#F5F5DC, #E8DCC4, #C9B896)
+- **Layout**: 12-column bento grid with asymmetric cards
+- **Animations**: Scroll-triggered, spring-based motion
+
+## Team
+
+- **Jerry Wu** - CEO & Co-founder
+- **Ken Wu** - CTO & Co-founder
+- **Myra Lam** - CMO & Co-founder
+
+## License
+
+Proprietary - All rights reserved.
