@@ -47,7 +47,7 @@ const cardVariants = {
     rotateX: 0,
     transition: {
       duration: 0.7,
-      ease: [0.16, 1, 0.3, 1],
+      ease: [0.16, 1, 0.3, 1] as const,
     },
   },
 };
@@ -71,7 +71,7 @@ export default function Testimonials() {
             whileInView={{ opacity: 1, scale: 1 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5 }}
-            className="font-elegant text-lg text-muted mb-4"
+            className="font-elegant text-lg text-muted-foreground mb-4"
           >
             Testimonials
           </motion.p>
@@ -125,7 +125,7 @@ export default function Testimonials() {
                   <p className="font-medium text-foreground">
                     {testimonial.author}
                   </p>
-                  <p className="font-elegant text-sm text-muted mt-1">
+                  <p className="font-elegant text-sm text-foreground/50 mt-1">
                     {testimonial.role}, {testimonial.company}
                   </p>
                 </motion.div>

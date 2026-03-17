@@ -40,7 +40,7 @@ export default function Footer() {
               height={36}
               className="h-8 w-auto"
             />
-            <p className="mt-4 text-sm text-muted leading-relaxed max-w-xs">
+            <p className="mt-4 text-sm text-muted-foreground leading-relaxed max-w-xs">
               AI-powered demand simulation for fashion brands.{" "}
               <span className="font-elegant">Predict what sells before you produce.</span>
             </p>
@@ -49,7 +49,7 @@ export default function Footer() {
                 <a
                   key={social.name}
                   href={social.href}
-                  className="text-muted hover:text-foreground transition-colors"
+                  className="text-muted-foreground hover:text-foreground transition-colors"
                   aria-label={social.name}
                 >
                   <social.icon size={20} weight="regular" />
@@ -65,7 +65,7 @@ export default function Footer() {
                 <li key={link.name}>
                   <a
                     href={link.href}
-                    className="text-sm text-muted hover:text-foreground transition-colors"
+                    className="text-sm text-muted-foreground hover:text-foreground transition-colors"
                   >
                     {link.name}
                   </a>
@@ -81,7 +81,7 @@ export default function Footer() {
                 <li key={link.name}>
                   <a
                     href={link.href}
-                    className="text-sm text-muted hover:text-foreground transition-colors"
+                    className="text-sm text-muted-foreground hover:text-foreground transition-colors"
                   >
                     {link.name}
                   </a>
@@ -97,7 +97,7 @@ export default function Footer() {
                 <li key={link.name}>
                   <a
                     href={link.href}
-                    className="text-sm text-muted hover:text-foreground transition-colors"
+                    className="text-sm text-muted-foreground hover:text-foreground transition-colors"
                   >
                     {link.name}
                   </a>
@@ -108,10 +108,10 @@ export default function Footer() {
         </div>
 
         <div className="mt-16 pt-8 border-t border-border flex flex-col md:flex-row justify-between items-center gap-4">
-          <p className="text-sm text-muted">
+          <p className="text-sm text-muted-foreground">
             2026 StyleSim. All rights reserved.
           </p>
-          <p className="text-sm text-muted">
+          <p className="text-sm text-muted-foreground">
             Made with care in San Francisco
           </p>
         </div>

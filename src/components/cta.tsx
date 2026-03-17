@@ -77,7 +77,7 @@ export default function CTA() {
             initial={{ opacity: 0, y: 20 }}
             animate={isInView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.6, delay: 0.4, ease: [0.16, 1, 0.3, 1] }}
-            className="mt-6 text-lg text-muted leading-relaxed max-w-xl mx-auto"
+            className="mt-6 text-lg text-muted-foreground leading-relaxed max-w-xl mx-auto"
           >
             Join 50+ fashion brands already using StyleSim to make smarter
             production decisions.
@@ -124,7 +124,7 @@ export default function CTA() {
             initial={{ opacity: 0 }}
             animate={isInView ? { opacity: 1 } : {}}
             transition={{ duration: 0.5, delay: 0.7 }}
-            className="mt-8 text-sm text-muted"
+            className="mt-8 text-sm text-muted-foreground"
           >
             No credit card required. Free trial for qualified brands.
           </motion.p>

@@ -74,7 +74,7 @@ const DemandBar = memo(function DemandBar({
             <TrendDown size={14} weight="bold" className="text-rose-500" />
           )}
           {product.trend === "neutral" && (
-            <Minus size={14} weight="bold" className="text-muted" />
+            <Minus size={14} weight="bold" className="text-muted-foreground" />
           )}
         </div>
       </div>
@@ -137,7 +137,7 @@ const AlertCard = memo(function AlertCard() {
     >
       <div className={`bg-card rounded-2xl border border-border p-4 shadow-lg min-w-[220px] overflow-hidden`}>
         <div className="flex items-center gap-2 mb-2">
-          <span className="text-xs text-muted">Recommended Action</span>
+          <span className="text-xs text-muted-foreground">Recommended Action</span>
           <div className="flex gap-1 ml-auto">
             {alerts.map((_, i) => (
               <span
@@ -166,7 +166,7 @@ const AlertCard = memo(function AlertCard() {
               <p className="text-sm font-medium text-foreground truncate">
                 {alert.title}
               </p>
-              <p className="text-xs text-muted mt-0.5">
+              <p className="text-xs text-muted-foreground mt-0.5">
                 {alert.message}
               </p>
             </div>
@@ -189,7 +189,7 @@ export default function SimulationVisual() {
         <div className="flex items-center justify-between mb-6">
           <div>
             <h3 className="font-semibold text-foreground">Spring 2026 Collection</h3>
-            <p className="text-sm text-muted mt-1">Demand Simulation Results</p>
+            <p className="text-sm text-muted-foreground mt-1">Demand Simulation Results</p>
           </div>
           <div className="flex items-center gap-2 px-3 py-1.5 bg-accent/10 rounded-full">
             <PulsingDot />
@@ -207,15 +207,15 @@ export default function SimulationVisual() {
           <div className="grid grid-cols-3 gap-4 text-center">
             <div>
               <p className="text-2xl font-semibold text-foreground">2.4M</p>
-              <p className="text-xs text-muted mt-1">Projected Units</p>
+              <p className="text-xs text-muted-foreground mt-1">Projected Units</p>
             </div>
             <div>
               <p className="text-2xl font-semibold text-accent">+34%</p>
-              <p className="text-xs text-muted mt-1">vs Last Season</p>
+              <p className="text-xs text-muted-foreground mt-1">vs Last Season</p>
             </div>
             <div>
               <p className="text-2xl font-semibold text-foreground">91%</p>
-              <p className="text-xs text-muted mt-1">Confidence</p>
+              <p className="text-xs text-muted-foreground mt-1">Confidence</p>
             </div>
           </div>
         </div>

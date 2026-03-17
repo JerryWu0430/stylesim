@@ -23,14 +23,11 @@ export default function Hero() {
         <Grainient
           color1="#F5F5DC"
           color2="#E8DCC4"
-          color3="#D4C4A8"
-          color4="#C9B896"
-          darkenTop={false}
-          grain={0.07}
-          grainBlending={0.5}
-          speed={0.8}
-          softness={0.6}
-          warp={0.3}
+          color3="#C9B896"
+          grainAmount={0.07}
+          blendSoftness={0.5}
+          timeSpeed={0.8}
+          warpStrength={0.3}
         />
       </div>
       {/* Hero Content */}

@@ -69,14 +69,15 @@ export const Navbar = ({ children, className }: NavbarProps) => {
       ref={ref}
       className={cn("fixed inset-x-0 top-4 z-40 w-full", className)}
     >
-      {React.Children.map(children, (child) =>
-        React.isValidElement(child)
-          ? React.cloneElement(
-              child as React.ReactElement<{ visible?: boolean }>,
-              { visible }
-            )
-          : child
-      )}
+      {React.Children.map(children, (child) => {
+        if (React.isValidElement(child) && typeof child.type !== "string") {
+          return React.cloneElement(
+            child as React.ReactElement<{ visible?: boolean }>,
+            { visible }
+          );
+        }
+        return child;
+      })}
     </motion.div>
   );
 };
@@ -106,14 +107,15 @@ export const NavBody = ({ children, className, visible }: NavBodyProps) => {
         className
       )}
     >
-      {React.Children.map(children, (child) =>
-        React.isValidElement(child)
-          ? React.cloneElement(
-              child as React.ReactElement<{ visible?: boolean }>,
-              { visible }
-            )
-          : child
-      )}
+      {React.Children.map(children, (child) => {
+        if (React.isValidElement(child) && typeof child.type !== "string") {
+          return React.cloneElement(
+            child as React.ReactElement<{ visible?: boolean }>,
+            { visible }
+          );
+        }
+        return child;
+      })}
     </motion.div>
   );
 };
